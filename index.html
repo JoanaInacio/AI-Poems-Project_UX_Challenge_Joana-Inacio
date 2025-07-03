@@ -61,9 +61,18 @@
         padding: 15px;
         font-size: 20px;
         width: 350px;
-        border: 2px solid #ffd700;
+        border: 3px solid #ffd700;
         border-radius: 15px;
         background: white;
+      }
+
+      input[type="text"]:focus {
+        border: 3px solid #ffd700;
+        outline: none;
+      }
+
+      input[type="text"]:hover {
+        border: 3px solid #ffd700;
       }
 
       input[type="text"]::placeholder {
@@ -219,7 +228,8 @@
         event.preventDefault();
 
         let myApiKey = "6t904043c5f4de3o104d9f1b3e869ba0";
-        let topic = document.querySelector("#poem-input").value;
+        let topicInput = document.querySelector("#poem-input");
+        let topic = topicInput.value;
         let button = document.querySelector("button");
 
         if (!topic.trim()) {
@@ -250,6 +260,8 @@
 
             button.disabled = false;
             button.innerHTML = "Generate Poem";
+            topicInput.value = "";
+            topicInput.focus();
 
             poemElement.innerHTML = "";
 
